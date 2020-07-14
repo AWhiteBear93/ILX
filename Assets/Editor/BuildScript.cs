@@ -54,6 +54,12 @@ public class BuildScript : MonoBehaviour
             string[] levels = GetLevelsFromBuildSetting();
             var buildArguments = GetComnandLineArguments();
 
+            Debug.Log("buildArguments count is " + buildArguments.Count);
+            foreach (var item in buildArguments)
+            {
+                Debug.LogFormat("buildArguments key {0},value {1}", item.Key, item.Value);
+            }
+
             var buildOption = BuildOptions.None;
             BuildReport buildReport;
             if (buildArguments[BUILD_OPTION] == "dev")
