@@ -12,8 +12,6 @@ public class BuildScript : MonoBehaviour
     const string OUTPUT_PATH = "-outputpath";
     const string BUILD_OPTION = "-buildoption";
 
-
-
     private static Dictionary<string, string> GetComnandLineArguments()
     {
         string[] args = System.Environment.GetCommandLineArgs();
@@ -48,6 +46,7 @@ public class BuildScript : MonoBehaviour
         return levels.ToArray();
     }
 
+    [MenuItem("Tool/Build")]
     public static void PerformBuildWindowsPlayer()
     {
         try
@@ -70,11 +69,20 @@ public class BuildScript : MonoBehaviour
                 targetGroup = EditorUserBuildSettings.selectedBuildTargetGroup,
                 options = buildOption,
             });
+
+            //buildReport = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            //{
+            //    scenes = levels,
+            //    target = EditorUserBuildSettings.activeBuildTarget,
+            //    locationPathName = "F:\\GitLib\\gitLib_1\\Build\\BuildTest.exe", //Path.Combine(buildArguments[OUTPUT_PATH], buildArguments[OUTPUT_FILENAME]),
+            //    targetGroup = EditorUserBuildSettings.selectedBuildTargetGroup,
+            //    options = BuildOptions.Development,
+            //});
         }
         catch (Exception ex)
         {
             Debug.Log("Build Failed: " + ex.Message);
-            EditorApplication.Exit(1);
+            //EditorApplication.Exit(1);
         }
     }
 }
