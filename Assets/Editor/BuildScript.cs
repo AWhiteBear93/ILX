@@ -70,16 +70,6 @@ public class BuildScript : MonoBehaviour
                 targetGroup = EditorUserBuildSettings.selectedBuildTargetGroup,
                 options = buildOption,
             });
-
-            switch (buildReport.summary.result)
-            {
-                case BuildResult.Succeeded:
-                    EditorApplication.Exit(0);
-                    break;
-                default:
-                    EditorApplication.Exit(1);
-                    break;
-            }
         }
         catch (Exception ex)
         {
